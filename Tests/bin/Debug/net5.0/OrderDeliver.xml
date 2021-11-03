@@ -1,0 +1,524 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OrderDeliver</name>
+    </assembly>
+    <members>
+        <member name="T:OrderDeliver.CourierArrivedEvent">
+            <summary>
+            the IEvent class of courier arrived
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.CourierArrivedEvent.MatchedOrder">
+            <summary>
+            the order that the courier answers for in the Matched strategy
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.CourierArrivedEvent.ArrivedCourier">
+            <summary>
+            the courier arrived
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.CourierArrivedEvent._story">
+            <summary>
+            the current story
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.CourierArrivedEvent.EventTime">
+            <summary>
+            simulation time of the event
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.CourierArrivedEvent.#ctor(System.TimeSpan,OrderDeliver.Order,OrderDeliver.Courier,OrderDeliver.IStory)">
+            <summary>
+            constructor
+            </summary>
+            <param name="eventTime">simulation time of the event</param>
+            <param name="order">the matched order in Matched strategy</param>
+            <param name="courier">the courier</param>
+            <param name="story">the challenge story</param>
+        </member>
+        <member name="M:OrderDeliver.CourierArrivedEvent.Process">
+            <summary>
+            processing when the IEvent takes affect in the simulation loop
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.CourierArrivedEvent.ProcessMatchedWithoutOrder">
+            <summary>
+            Process the Matched strategy without Order prepared
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.CourierArrivedEvent.ProcessMatchedWithOrder">
+            <summary>
+            Process the Matched strategy with Order prepared
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.CourierArrivedEvent.ProcessFirstInWithOrder(OrderDeliver.Order)">
+            <summary>
+            Process the First-In-First-Out strategy with Order prepared
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.CourierArrivedEvent.ProcessFirstInWithoutOrder">
+            <summary>
+            Process the First-In-First-Out strategy without Order prepared
+            </summary>
+        </member>
+        <member name="T:OrderDeliver.OrderPreparedEvent">
+            <summary>
+            the IEvent class of order prepared
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.OrderPreparedEvent._order">
+            <summary>
+            the prepared order
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.OrderPreparedEvent._story">
+            <summary>
+            the current story
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.OrderPreparedEvent.EventTime">
+            <summary>
+            simulation time of the event
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.OrderPreparedEvent.#ctor(System.TimeSpan,OrderDeliver.Order,OrderDeliver.IStory)">
+            <summary>
+            constructor
+            </summary>
+            <param name="eventTime">simulation time of the event</param>
+            <param name="order">the prepared order</param>
+            <param name="story">>the story</param>
+        </member>
+        <member name="M:OrderDeliver.OrderPreparedEvent.Process">
+            <summary>
+            processing when the IEvent takes affect in the simulation loop
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.OrderPreparedEvent.ProcessMatchedWithoutCourier(OrderDeliver.Courier)">
+            <summary>
+            Process the Matched strategy without matched courier arrived
+            </summary>
+            <param name="matchedCourier"></param>
+        </member>
+        <member name="M:OrderDeliver.OrderPreparedEvent.ProcessMatchedWithCourier(OrderDeliver.Courier)">
+            <summary>
+            Process the Matched strategy with matched courier arrived
+            </summary>
+            <param name="matchedCourier"></param>
+        </member>
+        <member name="M:OrderDeliver.OrderPreparedEvent.ProcessFirstInWithCourier(OrderDeliver.Courier)">
+            <summary>
+            Process the First-In-First-Out strategy with a courier available
+            </summary>
+            <param name="earliestCourier">the earliest courier</param>
+        </member>
+        <member name="M:OrderDeliver.OrderPreparedEvent.ProcessFirstInWithoutCourier">
+            <summary>
+            Process the First-In-First-Out strategy without courier available
+            </summary>
+        </member>
+        <member name="T:OrderDeliver.OrderReceivedEvent">
+            <summary>
+            the IEvent class of order received
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.OrderReceivedEvent._receivedOrderID">
+            <summary>
+            the integer ID of received order
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.OrderReceivedEvent._story">
+            <summary>
+            the current story 
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.OrderReceivedEvent.EventTime">
+            <summary>
+            simulation time of the event
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.OrderReceivedEvent.#ctor(System.TimeSpan,System.Int32,OrderDeliver.IStory)">
+            <summary>
+            constructor
+            </summary>
+            <param name="eventTime">simulation time of the event</param>
+            <param name="orderID">the integer ID of received order</param>
+            <param name="story">the story</param>
+        </member>
+        <member name="M:OrderDeliver.OrderReceivedEvent.Process">
+            <summary>
+            processing when the IEvent takes affect in the simulation loop
+            </summary>
+        </member>
+        <member name="T:OrderDeliver.IStory">
+            <summary>
+            the IStory interface for decoupling
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.IStory.FirstInFirstOut">
+            <summary>
+            true indicates the First-In-First-Out strategy, false indicates the Matched strategy
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.IStory.TotalOrderDelivered">
+            <summary>
+            number of total orders delivered
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.IStory.AddEventLog(SimulationCore.EventLog)">
+            <summary>
+            add a new event log to the EventLogs collection
+            </summary>
+            <param name="log">the EventLog to be added</param>
+        </member>
+        <member name="M:OrderDeliver.IStory.Print(System.String,System.TimeSpan)">
+            <summary>
+            to print specified message prefixed with the specified time stamp
+            </summary>
+            <param name="message">the message to be printed</param>
+            <param name="time">specified time stamp, usually the event time</param>
+        </member>
+        <member name="M:OrderDeliver.IStory.GetEarlistCourier">
+            <summary>
+            get the earliest courier with min ArrivalTime
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrderDeliver.IStory.GetCourier(System.Int32)">
+            <summary>
+            return a courier by ID
+            </summary>
+            <param name="courierID">the ID of expected courier</param>
+            <returns>the expected courier</returns>
+        </member>
+        <member name="M:OrderDeliver.IStory.GetArbitraryOrder">
+            <summary>
+            get an arbitrary order, which is prepared and not delivered
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrderDeliver.IStory.AddOneOrderDelivered">
+            <summary>
+            total order counting
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.IStory.BookCourierArrival(System.Int32,System.TimeSpan)">
+            <summary>
+            book a courier arrival event in the FEL when dispatched
+            </summary>
+            <param name="orderID">the integer ID of the order</param>
+            <param name="eventTime">current time from which the interval is counted</param>
+        </member>
+        <member name="M:OrderDeliver.IStory.BookOrderPrepared(System.Int32,System.TimeSpan)">
+            <summary>
+            book a order prepared event in the FEL
+            </summary>
+            <param name="receivedOrderID">the integer ID of the order</param>
+            <param name="eventTime">current time from which the interval is counted</param>
+        </member>
+        <member name="M:OrderDeliver.IStory.BookNextOrder(System.TimeSpan)">
+            <summary>
+            book next order received event in the FEL
+            </summary>
+            <param name="eventTime">current time from which the interval is counted</param>
+        </member>
+        <member name="T:OrderDeliver.Courier">
+            <summary>
+            the Courier class
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Courier.ID">
+            <summary>
+            the integer ID of courier 
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Courier.Arrived">
+            <summary>
+            indicates that the courier has arrived at the kitchen
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Courier.Delivered">
+            <summary>
+            indicates that the courier has delivered a order
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Courier.ArrivalTime">
+            <summary>
+            the simulation time when the courier arrived at the kitchen
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Courier.WaitTime">
+            <summary>
+            the wait time since the courier arrived at the kitchen till delivered the order
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.Courier.#ctor(System.Int32)">
+            <summary>
+            constructor of Courier class
+            </summary>
+            <param name="id">the integer ID of the courier</param>
+        </member>
+        <member name="M:OrderDeliver.Courier.SetDelivered(System.TimeSpan)">
+            <summary>
+            set the courier status to 'Delivered' the order
+            </summary>
+            <param name="tsDelivered">the simulation time when the courier delivered the order</param>
+        </member>
+        <member name="M:OrderDeliver.Courier.SetArrived(System.TimeSpan)">
+            <summary>
+            set the courier status to 'Arrived' at the kitchen
+            </summary>
+            <param name="tsArrived">>the simulation time when the courier arrived at the kitchen</param>
+        </member>
+        <member name="T:OrderDeliver.Order">
+            <summary>
+            the Order class
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Order.LongID">
+            <summary>
+            the given long ID in the JSON file
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Order.ID">
+            <summary>
+            the integer ID used in the story
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Order.Name">
+            <summary>
+            the order name given in the JSON file
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Order.PrepDuration">
+            <summary>
+            the order prepTime given in the JSON file
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Order.Prepared">
+            <summary>
+            the status if the order is prepared
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Order.Delivered">
+            <summary>
+            the status if the order is delivered
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Order.MatchedCourierID">
+            <summary>
+            the integer ID of matched courier
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Order.PreparedTime">
+            <summary>
+            the simulation time when the order is prepared
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Order.WaitTime">
+            <summary>
+            the wait time since prepared until delivered
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.Order.#ctor(System.Int32,System.String,System.String,System.TimeSpan)">
+            <summary>
+            the constructor of the Order class
+            </summary>
+            <param name="id">the integer ID</param>
+            <param name="longId">the long ID given in the JSON file</param>
+            <param name="name">the order prepTime given in the JSON file</param>
+            <param name="prepDuration">the order prepTime given in the JSON file</param>
+        </member>
+        <member name="M:OrderDeliver.Order.SetMatchedCourier(System.Int32)">
+            <summary>
+            dispatch a courier
+            </summary>
+            <param name="courierID">the integer ID of matched courier</param>
+        </member>
+        <member name="M:OrderDeliver.Order.SetPrepared(System.TimeSpan)">
+            <summary>
+            set the order status to 'Prepared'
+            </summary>
+            <param name="tsPrepared">the simulation time when the order set 'Prepared'</param>
+        </member>
+        <member name="M:OrderDeliver.Order.SetDelivered(System.TimeSpan)">
+            <summary>
+            set the order status to 'Delivered'
+            </summary>
+            <param name="tsDelivered">the simulation time when the order set 'Delivered'</param>
+        </member>
+        <member name="T:OrderDeliver.Story">
+            <summary>
+            the order delivery story of given challenge
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.Story._orders">
+            <summary>
+            the collection of the Orders
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.Story._orderCursor">
+            <summary>
+            the cursor of _orders, for generate order received event
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.Story._couriers">
+            <summary>
+            the collection of Couriers
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Story.CourierCount">
+            <summary>
+            number of total couriers
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Story.TotalOrderDelivered">
+            <summary>
+            number of total orders delivered
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Story.FirstInFirstOut">
+            <summary>
+            true indicates the First-In-First-Out strategy, false indicates the Matched strategy
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.Story._orderIntervalDistribution">
+            <summary>
+            the random distribution for order intervals
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.Story._courierArrivalDistribution">
+            <summary>
+            the random distribution for courier arriving intervals
+            </summary>
+        </member>
+        <member name="F:OrderDeliver.Story._strategy">
+            <summary>
+            the simulation strategy in string format
+            </summary>
+        </member>
+        <member name="P:OrderDeliver.Story.Sim">
+            <summary>
+            the Simulation instance
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.Story.#ctor(System.Boolean,System.Double)">
+            <summary>
+            constructor of Story class
+            </summary>
+            <param name="firstIn">true indicates the First-In-First-Out strategy, false indicates the Matched strategy</param>
+            <param name="accelRate">the acceleration rate of simulation, 1.0f by default</param>
+        </member>
+        <member name="M:OrderDeliver.Story.GetFELCount">
+            <summary>
+            get the count of the simulation's FEL
+            </summary>
+            <returns>the count of the simulation's FEL</returns>
+        </member>
+        <member name="M:OrderDeliver.Story.Run">
+            <summary>
+            running the story
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.Story.GetCourier(System.Int32)">
+            <summary>
+            return a courier by ID
+            </summary>
+            <param name="courierID">the ID of expected courier</param>
+            <returns>the expected courier</returns>
+        </member>
+        <member name="M:OrderDeliver.Story.Print(System.String)">
+            <summary>
+            to print specified message prefixed with the simulation time stamp
+            </summary>
+            <param name="message">the message to be printed</param>
+        </member>
+        <member name="M:OrderDeliver.Story.Print(System.String,System.TimeSpan)">
+            <summary>
+            to print specified message prefixed with the specified time stamp
+            </summary>
+            <param name="message">the message to be printed</param>
+            <param name="time">specified time stamp, usually the event time</param>
+        </member>
+        <member name="M:OrderDeliver.Story.AddOneOrderDelivered">
+            <summary>
+            total order counting
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.Story.AddCourier(OrderDeliver.Courier)">
+            <summary>
+            add a courier to the _couriers collection
+            </summary>
+            <param name="courier"></param>
+        </member>
+        <member name="M:OrderDeliver.Story.DoStatistics">
+            <summary>
+            print performance statistics
+            </summary>
+        </member>
+        <member name="M:OrderDeliver.Story.GetNextOrder">
+            <summary>
+            get next order from _orders collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrderDeliver.Story.GetArbitraryOrder">
+            <summary>
+            get an arbitrary order, which is prepared and not delivered
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrderDeliver.Story.GetEarlistCourier">
+            <summary>
+            get the earliest courier with min ArrivalTime
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrderDeliver.Story.LoadOrders">
+            <summary>
+            load orders from the given JSON file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrderDeliver.Story.GetOrderInterval">
+            <summary>
+            get a random order receiving interval
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrderDeliver.Story.GetCourierInterval">
+            <summary>
+            get a random courier arrival interval
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrderDeliver.Story.BookCourierArrival(System.Int32,System.TimeSpan)">
+            <summary>
+            book a courier arrival event in the FEL when dispatched
+            </summary>
+            <param name="orderID">the integer ID of the order</param>
+            <param name="eventTime">current time from which the interval is counted</param>
+        </member>
+        <member name="M:OrderDeliver.Story.BookOrderPrepared(System.Int32,System.TimeSpan)">
+            <summary>
+            book a order prepared event in the FEL
+            </summary>
+            <param name="receivedOrderID">the integer ID of the order</param>
+            <param name="eventTime">current time from which the interval is counted</param>
+        </member>
+        <member name="M:OrderDeliver.Story.BookNextOrder(System.TimeSpan)">
+            <summary>
+            book next order received event in the FEL
+            </summary>
+            <param name="eventTime">current time from which the interval is counted</param>
+        </member>
+        <member name="M:OrderDeliver.Story.AddEventLog(SimulationCore.EventLog)">
+            <summary>
+            add a new event log to the EventLogs collection
+            </summary>
+            <param name="log">the EventLog to be added</param>
+        </member>
+    </members>
+</doc>
