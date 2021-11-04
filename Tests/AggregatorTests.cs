@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Prism.Events;
-using SimulationCore;
+using BlackSim;
 
 namespace Tests
 {

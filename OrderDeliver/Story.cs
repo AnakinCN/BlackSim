@@ -1,7 +1,7 @@
 ﻿using Accord.Statistics.Distributions.Univariate;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using SimulationCore;
+using BlackSim;
 using System;
 using System.Collections.Generic;
 using System.Linq;

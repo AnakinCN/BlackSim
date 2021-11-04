@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OrderDeliver\OrderDeliver.csproj" />
-    <ProjectReference Include="..\SimulationCore\BlackSim.csproj" />
   </ItemGroup>
 
 </Project>

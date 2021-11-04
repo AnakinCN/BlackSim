@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Prism.Events;
-namespace SimulationCore
+namespace BlackSim
 {
     public class PubSubMessage : PubSubEvent<Message>
     {

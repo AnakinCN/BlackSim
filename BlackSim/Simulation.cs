@@ -6,7 +6,7 @@ using Prism.Mvvm;
 using Prism;
 using Prism.Events;
 
-namespace SimulationCore
+namespace BlackSim
 {
     /// <summary>
     /// the very tiny simulation core that supports a story

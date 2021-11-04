@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimulationCore
+namespace BlackSim
 {
     /// <summary>
     /// the IEvent interface that can be stored in a future event list

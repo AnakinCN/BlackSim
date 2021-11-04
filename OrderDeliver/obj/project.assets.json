@@ -4938,8 +4938,8 @@
     },
     "BlackSim/1.0.0": {
       "type": "project",
-      "path": "../SimulationCore/BlackSim.csproj",
-      "msbuildProject": "../SimulationCore/BlackSim.csproj"
+      "path": "../BlackSim/BlackSim.csproj",
+      "msbuildProject": "../BlackSim/BlackSim.csproj"
     },
     "Models/1.0.0": {
       "type": "project",
@@ -4987,11 +4987,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "D:\\BlackSim\\BlackSim\\BlackSim.csproj": {
+              "projectPath": "D:\\BlackSim\\BlackSim\\BlackSim.csproj"
+            },
             "D:\\BlackSim\\Models\\Models.csproj": {
               "projectPath": "D:\\BlackSim\\Models\\Models.csproj"
-            },
-            "D:\\BlackSim\\SimulationCore\\BlackSim.csproj": {
-              "projectPath": "D:\\BlackSim\\SimulationCore\\BlackSim.csproj"
             }
           }
         }
