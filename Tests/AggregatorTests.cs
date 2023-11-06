@@ -7,33 +7,32 @@ using Xunit;
 using Prism.Events;
 using BlackSim;
 
-namespace Tests
+namespace Tests;
+
+public class AggregatorTests
 {
-    public class AggregatorTests
+    EventAggregator Aggregator;
+    public AggregatorTests()
     {
-        EventAggregator Aggregator;
-        public AggregatorTests()
-        {
-            Aggregator = new EventAggregator();
-            Aggregator.GetEvent<PubSubMessage>().Subscribe(_handler);
-        }
+        Aggregator = new EventAggregator();
+        Aggregator.GetEvent<PubSubMessage>().Subscribe(_handler);
+    }
 
-        private void _handler(Message message)
+    private void _handler(Message message)
+    {
+        switch(message.MessageCode)
         {
-            switch(message.MessageCode)
-            {
-                case "A":
-                    message.Parameters.Add("result" , true);
-                    break;
-            }
+            case "A":
+                message.Parameters.Add("result" , true);
+                break;
         }
+    }
 
-        [Fact]
-        public void AggregatorTest()
-        {
-            Message message = new Message("A", "", new Dictionary<string, object>());
-            Aggregator.GetEvent<PubSubMessage>().Publish(message);
-            Assert.True((bool)message.Parameters["result"]);
-        }
+    [Fact]
+    public void AggregatorTest()
+    {
+        Message message = new Message("A", "", new Dictionary<string, object>());
+        Aggregator.GetEvent<PubSubMessage>().Publish(message);
+        Assert.True((bool)message.Parameters["result"]);
     }
 }

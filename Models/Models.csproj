@@ -1,12 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
+    <TargetFramework>net8.0</TargetFramework>
+	  <LangVersion>preview</LangVersion>
+	  <EnablePreviewFeatures>true</EnablePreviewFeatures>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Core" Version="8.1.97" />
+    <PackageReference Include="Prism.Core" Version="9.0.271-pre" />
   </ItemGroup>
 
 </Project>
